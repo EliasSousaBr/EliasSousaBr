@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMATAR MENSAGEM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body><center>FORMATAR MENSAGEM</center></h1>
+<br/>
+<h3><center>FORMATAR TEXTO PARA ENVIO NO WHATSAPP</center></h3>
+<br/>
+<br/>
+    <div class="form-group">
+        <label for="LinkWeb">Link do Conteúdo:</label>
+        <input type="text" id="LinkWeb">
+    </div>
+    <div class="form-group">
+        <label for="Nome_Usuario">Usuário:</label>
+        <input type="text" id="Nome_Usuario">
+    </div>
+    <div class="form-group">
+        <label for="Comentario_Usuario">Comentário:</label>
+        <input type="text" id="Comentario_Usuario">
+    </div>
+    <button onclick="gerarTexto()">Gerar Texto</button>
+
+<br/>
+<br/>
+    <div class="form-group">
+        <label for="resultado">Texto Gerado:</label>
+        <textarea id="resultado" rows="3" readonly></textarea>
+    </div>
+    <button onclick="copiarTexto()">Copiar Texto</button>
+
+    <script>
+        function gerarTexto() {
+            var LinkWeb = document.getElementById('LinkWeb').value;
+            var Nome_Usuario = document.getElementById('Nome_Usuario').value;
+            var Comentario_Usuario = document.getElementById('Comentario_Usuario').value;
+            var texto = 'LINK: ' + LinkWeb + ' - USUÁRIO: ' + Nome_Usuario + ' - COMENTÁRIO: ' + Comentario_Usuario;
+            document.getElementById('resultado').value = texto;
+        }
+
+        function copiarTexto() {
+            var texto = document.getElementById('resultado');
+            texto.select();
+            texto.setSelectionRange(0, 99999); // Para dispositivos móveis
+            document.execCommand('copy');
+            alert('Texto copiado: ' + texto.value);
+        }
+    </script>
+</body>
+</html>
+
